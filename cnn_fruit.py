@@ -12,9 +12,9 @@ from keras.preprocessing.image import ImageDataGenerator
 
 i = 0  
 font = cv2.FONT_HERSHEY_SIMPLEX
-pathfinal = "C:\\Users\\monke\\Downloads\\python cnn\\final"
+pathfinal = 'final'
 
-cnn = keras.models.load_model('modelbuild19_30e.h5') 
+cnn = keras.models.load_model('modelcnn.h5') 
 
 def getName9(classNo):
     if   classNo == 0: return 'Apple'
@@ -81,6 +81,7 @@ print("Camera connection successfully")
 
 while(True):  
     r, frame = vid.read() 
+    frame=cv2.flip(frame,1)
     cv2.putText(frame, "Name:" , (20, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
     cv2.putText(frame, "Class:" , (20, 75), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
     cv2.imwrite(pathfinal+str(i)+".jpg", frame)
